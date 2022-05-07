@@ -329,9 +329,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
-  delay: 0.1
-  totalTiles: 1000
-  tilePrefab: {fileID: 919132149155446097, guid: b8f4ab5eb044eb94eb717450f59e415a, type: 3}
+  delay: 0
+  totalTiles: 300
+  tilePrefab: {fileID: 4680552247927058069, guid: a5c6a7b852cbac34f8921d52a761327e, type: 3}
+  waterTilePrefab: {fileID: 919132149155446097, guid: f6e5f733f8eba0f409f1c03619f00e0f, type: 3}
 --- !u!4 &1450695719
 Transform:
   m_ObjectHideFlags: 0
