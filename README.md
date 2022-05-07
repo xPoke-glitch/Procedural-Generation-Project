@@ -27,6 +27,10 @@ It also fill holes made of only 1 block and it adds lava/water all around the ge
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/perlin-noise.gif" width="750">
 
+It's interesting the result that you obtain by using tiles of different heights
+
+<img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/perlin-heights.png" width="750">
+
 ## Team
 
 **Developers**:
