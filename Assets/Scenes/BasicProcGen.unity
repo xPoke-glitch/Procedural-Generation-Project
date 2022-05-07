@@ -167,15 +167,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 919132149155446097, guid: b8f4ab5eb044eb94eb717450f59e415a, type: 3}
   - {fileID: 7713588929370479664, guid: dbe8bb3620adccd4ea33af6839167935, type: 3}
-  - {fileID: 8298249322035963019, guid: febbc37f9a2d58e4a90dcaeda1625832, type: 3}
+  - {fileID: 919132149155446097, guid: b8f4ab5eb044eb94eb717450f59e415a, type: 3}
   - {fileID: 130270580304539086, guid: cfeb9de714aa65d45b1ac1cfbdb607a9, type: 3}
-  mapWidth: 20
-  mapHeight: 20
-  magnification: 2
-  xOffset: 3
-  yOffset: 4
+  - {fileID: 8298249322035963019, guid: febbc37f9a2d58e4a90dcaeda1625832, type: 3}
+  mapWidth: 40
+  mapHeight: 40
+  magnification: 10
+  xOffset: 5
+  yOffset: 5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
