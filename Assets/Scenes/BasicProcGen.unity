@@ -123,6 +123,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &466199275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466199276}
+  - component: {fileID: 466199277}
+  m_Layer: 0
+  m_Name: Perlin Noise Procedural Generation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466199276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466199275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &466199277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466199275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6cded0ffe62444f90abac516ed9225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 919132149155446097, guid: b8f4ab5eb044eb94eb717450f59e415a, type: 3}
+  - {fileID: 7713588929370479664, guid: dbe8bb3620adccd4ea33af6839167935, type: 3}
+  - {fileID: 8298249322035963019, guid: febbc37f9a2d58e4a90dcaeda1625832, type: 3}
+  - {fileID: 130270580304539086, guid: cfeb9de714aa65d45b1ac1cfbdb607a9, type: 3}
+  mapWidth: 20
+  mapHeight: 20
+  magnification: 2
+  xOffset: 3
+  yOffset: 4
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,12 +363,12 @@ GameObject:
   - component: {fileID: 1450695719}
   - component: {fileID: 1450695718}
   m_Layer: 0
-  m_Name: Procedural Generation
+  m_Name: Basic Procedural Generation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1450695718
 MonoBehaviour:
   m_ObjectHideFlags: 0
