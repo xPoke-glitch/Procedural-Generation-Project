@@ -18,13 +18,12 @@ If you want to open, edit or see the Unity project:
 
 # Procedural Generation Tests
 
-1. **Basic procedural generation** - the scripts starts from a starting point and then it chooses randomly one of the 4 possible directions (up - down - left - right) till to reach the max numbers of tiles set.
-
+1. **Basic procedural generation** - The scripts starts from a starting point and then it chooses randomly one of the 4 possible directions (up - down - left - right) till to reach the max numbers of tiles set.
 It also fill holes made of only 1 block and it adds lava/water all around the generated map.
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/basic-proc-gen.gif" width="750">
 
-2. **Perlin nois map generation** - the map is generated based on Perlin Noise
+2. **Perlin noise map generation** - The map is generated based on Perlin noise
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/perlin-noise.gif" width="750">
 
