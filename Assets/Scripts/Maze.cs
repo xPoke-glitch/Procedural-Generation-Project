@@ -91,14 +91,12 @@ public class Maze : MonoBehaviour
 
     private MazeTile GetRandomUnvisitedNeighbour(int x, int y)
     {
-        Debug.Log("GET ENTERED FOR "+x+";"+y);
         MazeTile currentTile = tiles[x][y];
 
         FindUnvisitedNeighbours(currentTile);
 
         // Get random unvisited neighbour
         int randIndex = UnityEngine.Random.Range(0, currentTile.UnvisitedNeighbours.Count);
-        Debug.Log("Chosen Index = "+randIndex+" neigh count = "+currentTile.UnvisitedNeighbours.Count);
         MazeTile neighbour = currentTile.UnvisitedNeighbours[randIndex];
         currentTile.UnvisitedNeighbours.Remove(neighbour);
 
