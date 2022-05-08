@@ -37,6 +37,10 @@ It's interesting the result that you obtain by using tiles of different heights
 
 4. **Maze Generation throught Randomized depth-first search** - I used this algoritmh to create a maze generation in a separated scene. The maze is always different and there is always a path leading to an exit. Here you can see a 10x10 grid based maze
 
+<img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/maze-gen.gif" width="750">
+
+<img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/maze-in.gif" width="750">
+
 ## Team
 
 **Developers**:
