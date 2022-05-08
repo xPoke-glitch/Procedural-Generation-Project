@@ -18,27 +18,55 @@ public class PerlinNoiseMap : MonoBehaviour
     private int xOffset = 0;
     [SerializeField]
     private int yOffset = 0;
+    [SerializeField]
+    private float delay;
 
     [Header("Mixed Generation")]
     [SerializeField]
     private BasicProcGen basicProcGen;
 
-    private List<List<int>> _noiseGrid = new List<List<int>>();
-    private List<List<GameObject>> _tileGrid = new List<List<GameObject>>();
+    private bool _isGenerating = false;
+    private List<GameObject> _genTiles;
 
     public void GenerateMapUsingBasicProcGen()
     {
+        RemoveAllTiles();
+
+        if(_isGenerating)
+            return;
+        _isGenerating = true;
+
         basicProcGen.GenerateMap(() => {
 
             StartCoroutine(COGenerateOnBasic());
 
-        }, 100, 0.0f, false);
+        }, 0.0f, false);
     }
 
-    void Start()
+    public void GenerateMapWithPerlin()
     {
-        //StartCoroutine(COGenerate());
-        GenerateMapUsingBasicProcGen();
+        RemoveAllTiles();
+
+        if (_isGenerating)
+            return;
+        _isGenerating = true;
+        StartCoroutine(COGenerate());
+    }
+
+    public void RemoveAllTiles()
+    {
+        if (_genTiles.Count == 0)
+            return;
+        foreach(GameObject obj in _genTiles)
+        {
+            Destroy(obj);
+        }
+        _genTiles.Clear();
+    }
+
+    private void Awake()
+    {
+        _genTiles = new List<GameObject>();
     }
 
     private IEnumerator COGenerateOnBasic()
@@ -51,11 +79,13 @@ public class PerlinNoiseMap : MonoBehaviour
                 {
                     int index = GetIndexFromPerlin((int)x, (int)z);
                     // Instantiate
-                    Instantiate(tiles[index], new Vector3(x * 2, 0, z * 2), Quaternion.identity);
-                    yield return new WaitForSeconds(0.1f);
+                    GameObject obj = Instantiate(tiles[index], new Vector3(x * 2, 0, z * 2), Quaternion.identity);
+                    _genTiles.Add(obj);
+                    yield return new WaitForSeconds(delay);
                 }
             }
         }
+        _isGenerating = false;
         yield return null;
     }
 
@@ -63,18 +93,15 @@ public class PerlinNoiseMap : MonoBehaviour
     {
         for(int x=0; x<mapWidth; x++)
         {
-            _noiseGrid.Add(new List<int>());
-            _tileGrid.Add(new List<GameObject>());
-
             for(int z=0; z<mapHeight; z++)
             {
                 int index = GetIndexFromPerlin(x, z);
-                _noiseGrid[x].Add(index);
                 // Instantiate
-                Instantiate(tiles[index], new Vector3(x*2, 0, z*2), Quaternion.identity);
+                GameObject obj = Instantiate(tiles[index], new Vector3(x*2, 0, z*2), Quaternion.identity);
+                _genTiles.Add(obj);
             }
         }
-
+        _isGenerating = false;
         yield return null;
     }
 

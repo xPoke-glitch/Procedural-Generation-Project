@@ -22,27 +22,64 @@ public class BasicProcGen : MonoBehaviour
 
     private List<Vector3> _visited = new List<Vector3>();
     private Vector3 _currentPosition;
+    private List<GameObject> _genTiles = new List<GameObject>();
 
     private float _maxZ = 0;
     private float _minZ = 0;
     private float _maxX = 0;
     private float _minX = 0;
 
-    public void GenerateMap(Action OnFinishCallback, int totalTiles=100, float delay = 0.1f, bool instatiateObj = true)
+    private bool _isGenerating = false;
+
+    public void GenerateMap(Action OnFinishCallback, float delay = 0.1f, bool instatiateObj = true)
     {
-        this.totalTiles = totalTiles;
+        RemoveAllTiles();
+
+        if (_isGenerating)
+            return;
+        _isGenerating = true;
         StartCoroutine(COGenerate(OnFinishCallback, delay, instatiateObj));
     }
 
     public void FillHoles(Action OnFinishCallback, float delay = 0.1f)
     {
+        if (_isGenerating)
+            return;
+        _isGenerating = true;
+
         StartCoroutine(COFillAllHoles(OnFinishCallback, delay));
+    }
+
+    public void GenerateMapWithWater()
+    {
+        RemoveAllTiles();
+
+        if (_isGenerating)
+            return;
+        _isGenerating = true;
+        StartCoroutine(COGenerate(GenerateWater, delay));
+    }
+
+    public void RemoveAllTiles()
+    {
+        if (_genTiles.Count == 0)
+            return;
+        foreach (GameObject obj in _genTiles)
+        {
+            Destroy(obj);
+        }
+        _visited.Clear();
+        _genTiles.Clear();
+
+        _maxX = 0;
+        _minX = 0;
+        _maxZ = 0;
+        _maxX = 0;
     }
 
     private void Start()
     {
         _currentPosition = startPosition;
-        //StartCoroutine(COGenerate(GenerateWater, delay));
     }
 
     private void GenerateWater()
@@ -72,20 +109,22 @@ public class BasicProcGen : MonoBehaviour
         {
             for(float z=_minZ; z<=_maxZ; z += 2)
             {
-
                 if (Physics.CheckSphere(new Vector3(x - 2, 0, z), 0.01f) && Physics.CheckSphere(new Vector3(x + 2, 0, z), 0.01f) &&
                    Physics.CheckSphere(new Vector3(x, 0, z - 2), 0.01f) && Physics.CheckSphere(new Vector3(x, 0, z + 2), 0.01f))
                 {
                     // Fill 1 box
-                    Instantiate(tilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    GameObject obj = Instantiate(tilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    _genTiles.Add(obj);
                 }
                 if (!Physics.CheckSphere(new Vector3(x, 0, z), 0.01f))
                 {
-                    Instantiate(waterTilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    GameObject obj = Instantiate(waterTilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    _genTiles.Add(obj);
                 }
                 yield return new WaitForSeconds(delay);
             }
         }
+        _isGenerating = false;
     }
 
     private IEnumerator COFillAllHoles(Action OnFinishCallback, float delay = 0.5f)
@@ -98,12 +137,14 @@ public class BasicProcGen : MonoBehaviour
                     Physics.CheckSphere(new Vector3(x, 0, z - 2), 0.01f) && Physics.CheckSphere(new Vector3(x, 0, z + 2), 0.01f))
                 {
                     // Fill 1 box
-                    Instantiate(tilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    GameObject obj = Instantiate(tilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    _genTiles.Add(obj);
                 }
                 yield return new WaitForSeconds(delay);
             }
         }
         OnFinishCallback?.Invoke();
+        _isGenerating = false;
     }
 
     private IEnumerator COGenerate(Action OnFinishCallback, float delay=0.5f, bool insantiateObj = true)
@@ -118,7 +159,8 @@ public class BasicProcGen : MonoBehaviour
                 if (insantiateObj)
                 {
                     // Instantiate tile in current position
-                    Instantiate(tilePrefab, _currentPosition, Quaternion.identity);
+                    GameObject obj = Instantiate(tilePrefab, _currentPosition, Quaternion.identity);
+                    _genTiles.Add(obj);
                 }
 
                 // check min and max
@@ -133,8 +175,6 @@ public class BasicProcGen : MonoBehaviour
         }
         while(_visited.Count < totalTiles);
         OnFinishCallback?.Invoke();
+        _isGenerating = false;
     }
-    
-   
-
 }
