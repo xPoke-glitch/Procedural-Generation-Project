@@ -74,7 +74,7 @@ public class Maze : MonoBehaviour
             FindUnvisitedNeighbours(currentCell);
 
             // If the current cell has any neighbours which have not been visited
-            if (currentCell.UnvisitedNeighbours.Count != 0)
+            while (currentCell.UnvisitedNeighbours.Count != 0)
             {
                 // Choose one of the unvisited neighbours
                 MazeTile chosenCell = GetRandomUnvisitedNeighbour(currentCell.X, currentCell.Y);
