@@ -19,12 +19,44 @@ public class PerlinNoiseMap : MonoBehaviour
     [SerializeField]
     private int yOffset = 0;
 
+    [Header("Mixed Generation")]
+    [SerializeField]
+    private BasicProcGen basicProcGen;
+
     private List<List<int>> _noiseGrid = new List<List<int>>();
     private List<List<GameObject>> _tileGrid = new List<List<GameObject>>();
 
+    public void GenerateMapUsingBasicProcGen()
+    {
+        basicProcGen.GenerateMap(() => {
+
+            StartCoroutine(COGenerateOnBasic());
+
+        }, 100, 0.0f, false);
+    }
+
     void Start()
     {
-        StartCoroutine(COGenerate());
+        //StartCoroutine(COGenerate());
+        GenerateMapUsingBasicProcGen();
+    }
+
+    private IEnumerator COGenerateOnBasic()
+    {
+        for(float x=basicProcGen.Min.x; x<basicProcGen.Max.x; x++)
+        {
+            for (float z=basicProcGen.Min.y; z<basicProcGen.Max.y; z++)
+            {
+                if (basicProcGen.Visited.Contains(new Vector3(x*2, 0, z*2)))
+                {
+                    int index = GetIndexFromPerlin((int)x, (int)z);
+                    // Instantiate
+                    Instantiate(tiles[index], new Vector3(x * 2, 0, z * 2), Quaternion.identity);
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+        }
+        yield return null;
     }
 
     private IEnumerator COGenerate()
