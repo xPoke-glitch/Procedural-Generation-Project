@@ -98,7 +98,7 @@ public class Maze : MonoBehaviour
 
         // Get random unvisited neighbour
         int randIndex = UnityEngine.Random.Range(0, currentTile.UnvisitedNeighbours.Count);
-        Debug.Log(currentTile.UnvisitedNeighbours.Count);
+        Debug.Log("Chosen Index = "+randIndex+" neigh count = "+currentTile.UnvisitedNeighbours.Count);
         MazeTile neighbour = currentTile.UnvisitedNeighbours[randIndex];
         currentTile.UnvisitedNeighbours.Remove(neighbour);
 
@@ -109,6 +109,7 @@ public class Maze : MonoBehaviour
     {
         int x = currentTile.X;
         int y = currentTile.Y;
+
         // Find unvisited neighbours
         currentTile.UnvisitedNeighbours = new List<MazeTile>();
         // Up
@@ -122,7 +123,7 @@ public class Maze : MonoBehaviour
             currentTile.UnvisitedNeighbours.Add(tiles[x + 1][y]);
         }
         // Right
-        if (y + 1 < dimension && !tiles[y + 1][y].IsVisited)
+        if (y + 1 < dimension && !tiles[x][y+1].IsVisited)
         {
             currentTile.UnvisitedNeighbours.Add(tiles[x][y + 1]);
         }
