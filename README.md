@@ -31,6 +31,10 @@ It's interesting the result that you obtain by using tiles of different heights
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/perlin-heights.png" width="750">
 
+3. **Mixed Basic procedural generation and Perlin noise** - I used the basic procedural generation to create a random map and then I used Perlin noise as height map, so that you can generate a map with tiles of different heights with some chunks of grass here and there
+
+<img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/mixed-basic-perlin.gif" width="750">
+
 ## Team
 
 **Developers**:
