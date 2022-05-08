@@ -35,7 +35,7 @@ It's interesting the result that you obtain by using tiles of different heights
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/mixed-basic-perlin.gif" width="750">
 
-4. **Maze Generation throught Randomized depth-first search** - I used this algoritmh to create a maze generation in a separated scene. The maze is always different and there is always a path leading to an exit. Here you can see a 10x10 grid based maze
+4. **Maze Generation throught Randomized depth-first search** - I used this algorithm to create a maze generation in a separated scene. The maze is always different and there is always a path leading to an exit. Here you can see a 10x10 grid based maze
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/maze-gen.gif" width="750">
 
