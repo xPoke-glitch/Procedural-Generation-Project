@@ -41,6 +41,14 @@ It's interesting the result that you obtain by using tiles of different heights
 
 <img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/maze-in.gif" width="750">
 
+5. **Conway Game of Life** - I created the Conway Game of Life in order to understand and use it for procedural generation (see point 6). You can draw on the board by clicking each cell, right click to fill an empty space and press play button to start/stop the simulation
+
+<img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/conway-gol.gif" width="750">
+
+6. **Cellular Automata Generation** - Generate a map using a random sailor pass and smoothing it with multiple iterations of the Conway Game of Life algorithm
+
+<img src="https://github.com/xPoke-glitch/Procedural-Generation-Project/blob/main/Screenshots/cellular-automata.gif" width="750">
+
 ## Team
 
 **Developers**:
