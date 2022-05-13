@@ -15,6 +15,9 @@ public class CellularAutomataGeneration : MonoBehaviour
     [SerializeField]
     private int iterations = 3; // Conway GoL iterations
 
+    [SerializeField]
+    private int neighbours = 5;
+
     private void Start()
     {
         Generate();
@@ -23,11 +26,9 @@ public class CellularAutomataGeneration : MonoBehaviour
     private void Generate()
     {
         Vector2Int size = new Vector2Int(width, height);
-        int startingPosition = size.x * size.y / 2; // center, but you can choose
+        //int startingPosition = size.x * size.y / 2; // center, but you can choose
 
         bool[,] positions = new bool[size.x, size.y];
-
-        // Tile thing here ...
 
         // Random first pass
         for (int x = 0; x < size.x; x++)
@@ -62,7 +63,7 @@ public class CellularAutomataGeneration : MonoBehaviour
                             }
                         }
                     }
-                    if (neighbourCount >= 5)
+                    if (neighbourCount >= neighbours)
                     {
                         newPositions[x, y] = true;
                     }
