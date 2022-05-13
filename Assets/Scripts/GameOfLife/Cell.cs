@@ -5,8 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class Cell : MonoBehaviour
 {
+    public Vector2Int Pos { get; set; }
     public bool On { get; private set; }
+    
     private MeshRenderer _meshRenderer;
+    
     public void SetCellActive(bool on)
     {
         On = on;
@@ -31,6 +34,10 @@ public class Cell : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SetCellActive(!On);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            FindObjectOfType<GameOfLife>().StartFill(Pos);
         }
     }
 

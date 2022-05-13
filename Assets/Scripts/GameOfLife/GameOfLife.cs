@@ -20,6 +20,11 @@ public class GameOfLife : MonoBehaviour
         _isPlaying = !_isPlaying;
     }
 
+    public void StartFill(Vector2Int pos)
+    {
+        Fill(pos.x,pos.y);
+    }
+
     private void Start()
     {
         _lastTick = Time.time;
@@ -46,6 +51,21 @@ public class GameOfLife : MonoBehaviour
         }
     }
 
+    private void Fill(int x, int y)
+    {
+        if (!((x < 0 || y < 0) || (x >= height || y >= width)))
+        {
+            if (!_cells[x, y].On)
+            {
+                _cells[x, y].SetCellActive(true);
+                Fill(x + 1, y);
+                Fill(x, y + 1);
+                Fill(x - 1, y);
+                Fill(x, y - 1);
+            }
+        }
+    }
+
     private void GenerateMap()
     {
         for(int y=0; y<height; y++)
@@ -55,6 +75,7 @@ public class GameOfLife : MonoBehaviour
                 GameObject newCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 newCube.transform.position = new Vector3(x,y,0);
                 _cells[x, y] = newCube.AddComponent<Cell>();
+                _cells[x, y].Pos = new Vector2Int(x, y);
             }
         }
     }
